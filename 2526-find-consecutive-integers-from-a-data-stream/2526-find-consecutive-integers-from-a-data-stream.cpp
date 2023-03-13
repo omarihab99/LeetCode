@@ -1,12 +1,7 @@
 class DataStream {
 public:
-    // vector<int> v;
-    int val;
-    int n;
-    int y;
+    int val,n,y;
     DataStream(int value, int k) {
-        // v.emplace_back(value);
-        // v.emplace_back(k);
         n=-1;
         val=value;
         y=k;
