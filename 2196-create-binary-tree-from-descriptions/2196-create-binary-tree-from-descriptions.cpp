@@ -12,26 +12,45 @@
 class Solution {
 public:
     TreeNode* createBinaryTree(vector<vector<int>>& descriptions) {
-        map<int,TreeNode*> m;
-        unordered_set<int> ch;
-        unordered_set<int> pr;
-        for(int i=0;i<descriptions.size();i++){
-            int p = descriptions[i][0];
-            int c = descriptions[i][1];
-            int l = descriptions[i][2];
-            if(m.find(p) == m.end())
-                m[p] = new TreeNode(p);
-            if(m.find(c) == m.end())
-                m[c] = new TreeNode(c);
-            if(l==1) m[p]->left=m[c];
-            else m[p]->right=m[c];
-            ch.emplace(c);
-            pr.emplace(p);
-            if(ch.find(p)!=ch.end()) pr.erase(p);
-            if(pr.find(c)!=pr.end()) pr.erase(c);
+        unordered_map<int,TreeNode*> map;
+        unordered_map<int,int> children;
+        for(int i = 0 ; i < descriptions.size() ;i++){
+            int parent = descriptions[i][0];
+            int child = descriptions[i][1];
+            TreeNode* p=NULL;
+            TreeNode*c = NULL;
+            if(map[parent]==0){
+                p = new TreeNode(parent);
+                map[parent] = p;
+            }
+            else{
+                p = map[parent];
+            }
+            
+            
+            if(map[child]==0){
+                c = new TreeNode(child);
+                map[child] = c;
+                children[child]=1;
+            }
+            else{
+                c=map[child];
+                children[child]=1;
+            }
+            
+            if(descriptions[i][2]==0){
+                p->right = c;
+            }
+            else{
+                p->left = c;
+            }
         }
-        int root = *pr.begin();
-        return m[root];
+        for(int i =0 ; i < descriptions.size() ;i++){
+            if(children[descriptions[i][0]]==0){
+                return map[descriptions[i][0]];
+            }
+        }
+        return NULL;
         
     }
 };
