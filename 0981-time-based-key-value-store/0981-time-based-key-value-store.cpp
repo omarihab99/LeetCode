@@ -1,32 +1,42 @@
 class TimeMap {
 public:
-    unordered_map<string,vector<pair<int,string>>> key_map;
+    unordered_map<string, vector<pair<int, string>>> keyTimeMap;
     TimeMap() {
     }
+    
     void set(string key, string value, int timestamp) {
-        key_map[key].push_back({timestamp, value});
+        // Push '(timestamp, value)' pair in 'key' bucket.
+        keyTimeMap[key].push_back({ timestamp, value });
     }
     
     string get(string key, int timestamp) {
-        if(key_map.find(key) == key_map.end() || timestamp < key_map[key][0].first) return "";
-        int left = 0, right = key_map[key].size()-1;
-        string time="";
-        while(left<=right){
-            int mid = (left+right)/2;
-            if(key_map[key][mid].first == timestamp) return key_map[key][mid].second;
-            if(key_map[key][mid].first < timestamp){
-                time = key_map[key][mid].second;
-                left = mid+1;
-            }
-            else right = mid-1;
+        // If the 'key' does not exist in map we will return empty string.
+        if (keyTimeMap.find(key) == keyTimeMap.end()) {
+            return "";
         }
-        return time;
+        
+        if (timestamp < keyTimeMap[key][0].first) {
+            return "";
+        }
+        
+        // Using binary search on the array of pairs.
+        int left = 0;
+        int right = keyTimeMap[key].size();
+        
+        while (left < right) {
+            int mid = (left + right) / 2;
+            if (keyTimeMap[key][mid].first <= timestamp) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        
+        // If iterator points to first element it means, no time <= timestamp exists.
+        if (right == 0) {
+            return "";
+        }
+                
+        return keyTimeMap[key][right - 1].second;
     }
 };
-
-/**
- * Your TimeMap object will be instantiated and called as such:
- * TimeMap* obj = new TimeMap();
- * obj->set(key,value,timestamp);
- * string param_2 = obj->get(key,timestamp);
- */
