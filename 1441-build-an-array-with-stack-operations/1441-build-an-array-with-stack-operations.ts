@@ -5,7 +5,7 @@ function buildArray(target: number[], n: number): string[] {
     for(let i=1; i<=n ;i++){
         stack.push(i);
         res.push("Push");
-        if(j<= target.length-1 && i===target[j]){
+        if(i===target[j]){
             if(j===target.length-1) break;
             j++;
         }
