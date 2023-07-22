@@ -7,7 +7,7 @@ public:
                 if(last>=0) ans = max(ans, i-last);
                 last=i;
             }
-            n = n >>1;
+            n >>=1;
             i++;
         }
         return ans;
