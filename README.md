@@ -7,6 +7,7 @@ My solutions for Leetcode problems.
 |  |
 | ------- |
 | [0835-linked-list-components](https://github.com/omarihab99/LeetCode/tree/master/0835-linked-list-components) |
+| [1072-next-greater-node-in-linked-list](https://github.com/omarihab99/LeetCode/tree/master/1072-next-greater-node-in-linked-list) |
 ## Hash Table
 |  |
 | ------- |
@@ -15,4 +16,13 @@ My solutions for Leetcode problems.
 |  |
 | ------- |
 | [0835-linked-list-components](https://github.com/omarihab99/LeetCode/tree/master/0835-linked-list-components) |
+| [1072-next-greater-node-in-linked-list](https://github.com/omarihab99/LeetCode/tree/master/1072-next-greater-node-in-linked-list) |
+## Stack
+|  |
+| ------- |
+| [1072-next-greater-node-in-linked-list](https://github.com/omarihab99/LeetCode/tree/master/1072-next-greater-node-in-linked-list) |
+## Monotonic Stack
+|  |
+| ------- |
+| [1072-next-greater-node-in-linked-list](https://github.com/omarihab99/LeetCode/tree/master/1072-next-greater-node-in-linked-list) |
 <!---LeetCode Topics End-->
